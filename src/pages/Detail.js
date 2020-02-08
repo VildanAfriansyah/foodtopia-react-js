@@ -76,6 +76,7 @@ class DetailItem extends React.Component {
   }
 
   addCard = async () =>{
+   if(token){
     const id_user = decode.id
     const {id} = this.props.match.params
     const url = APP_URL.concat(`cart/`)
@@ -84,6 +85,9 @@ class DetailItem extends React.Component {
         id_user : id_user,
         id_item : id
     })
+   }else{
+     alert('Login dulu cuk')
+   }
   }
 
   buttonPlus = ()=>{
@@ -160,11 +164,18 @@ class DetailItem extends React.Component {
                       </div>
                    </Nav>
                    <div className='mt-3 ml-3' >
-                      <Link to = {`../cart/${id_user}`} >
+                      {token ? 
+                        <Link to = {`../cart/${id_user}`} >
                         <Button style={{backgroundColor: '#ed5821'}} onClick={this.addCard}>
                           <span className="fa fa-shopping-cart"></span>&nbsp;<b>Add Card</b>
                         </Button>
                       </Link>
+                      :
+                      <Link to = {`#`} >
+                        <Button style={{backgroundColor: '#ed5821'}} onClick={this.addCard}>
+                          <span className="fa fa-shopping-cart"></span>&nbsp;<b>Add Card</b>
+                        </Button>
+                      </Link>}
                    </div>
                   </div>
                 </div>

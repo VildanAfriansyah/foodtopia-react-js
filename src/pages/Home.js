@@ -19,6 +19,7 @@ class Home extends React.Component{
     }
     async componentDidMount(){
         this.props.dispatch(getItems())
+        console.log(this.props.search)
     }
 
     prevButton = async()=>{

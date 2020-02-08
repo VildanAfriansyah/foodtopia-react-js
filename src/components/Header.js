@@ -77,6 +77,7 @@ class Header extends React.Component {
 
     render(){
         const {isOpen, ShowModalLogin, ShowModalRegister, ShowModalLogout, search} = this.state
+        console.log(search)
         return(
             <Container-fluid>
             <header id="mu-header" style={{backgroundColor: '#F3F3F3'}}>
@@ -151,10 +152,9 @@ class Header extends React.Component {
                         </div>
                         <div className="mr-3" style={{fontSize: '20px'}}>
                         <InputGroup>
-                            <Input onChange={this.handleChange}  placeholder = "Search ..." >
+                            <Input value = {search} onChange={(e) => this.setState({search: e.target.value})}  placeholder = "Search ..." >
                                 <Home 
-                                     data1 = {search} 
-                                     search = {this.handleChange}
+                                    search = {this.state.search}
                                 />
                             </Input>
                             <InputGroupAddon addonType="append" >
