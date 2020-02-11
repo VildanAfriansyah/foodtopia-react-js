@@ -18,8 +18,7 @@ class Home extends React.Component{
         }
     }
     async componentDidMount(){
-        this.props.dispatch(getItems())
-        console.log(this.props.search)
+        await this.props.dispatch(getItems())
     }
 
     prevButton = async()=>{
@@ -38,7 +37,6 @@ class Home extends React.Component{
 
     render(){
         return(
-            
             <div>
                 <Carosel />
             <Container>
@@ -46,6 +44,9 @@ class Home extends React.Component{
                     {
                         // isFetched&&
                         // data.data.map(v=>
+                        !this.props.item.isLoading &&
+                        // this.props.item.data.data.length > 0 &&
+                        this.props.item.data.data &&
                         this.props.item.data.data.map(v=>(
                             <Col md key = {v.id_item} className = 'mt-5'>
                                 <Link className = "nav-link" to = {`/Detail/${v.id_item}`}>

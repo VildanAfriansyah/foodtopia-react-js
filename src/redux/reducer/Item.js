@@ -43,7 +43,6 @@ const initialState = {
         }
       case 'GET_ITEMS_FULFILLED':
         return {
-          count: action.payload.data.data.length,
           data: action.payload.data,
           isLoading: false,
           isError: false
@@ -62,7 +61,6 @@ const initialState = {
           }
         case 'GET_NEXT_ITEMS_FULFILLED':
           return {
-            count: action.payload.data.data.length,
             data: action.payload.data,
             isLoading: false,
             isError: false
@@ -81,7 +79,6 @@ const initialState = {
           }
         case 'GET_ITEM_BY_ID_FULFILLED':
           return {
-            count: action.payload.data.data.length,
             data: action.payload.data,
             isLoading: false,
             isError: false

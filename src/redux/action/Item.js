@@ -7,10 +7,10 @@ import {APP_URL} from '../../source/config'
 const url = APP_URL.concat('item/')
 
 
-export const getItems = ()=>{
+export const getItems = (search = '')=>{
   return {
     type: 'GET_ITEMS',
-    payload: axios.get(url.concat(`show/?page=1&limit=9`))
+    payload: axios.get(url.concat(`?search[item_name]=${search}`))
   }
 }
 

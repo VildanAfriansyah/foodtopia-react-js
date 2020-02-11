@@ -22,8 +22,10 @@ import {
 import Jwt from 'jwt-decode'
 import Cookie from 'js-cookie'
 import {ModalLogin, ModalLogout, ModalRegister} from '../components/Modal'
-// import ModalRegister from '../components/ModalRegister'
+import { connect } from 'react-redux'
+
 import Home from '../pages/Home'
+import { getItems } from '../redux/action/Item'
 
 const token = Cookie.get('token')
 let decode = ''
@@ -45,6 +47,12 @@ class Header extends React.Component {
             ShowModalLogout: false
         }
     }
+
+    getData = async() =>{
+        await this.props.dispatch(getItems(this.state.search))
+    }
+
+    
 
     toggle = () =>{
         this.setState({
@@ -72,12 +80,18 @@ class Header extends React.Component {
 
     handleChange = (event)=>{
         this.setState({search: event.target.value})
+        // console.log(this.state.search)
+    }
+
+    handleSearch = async (search) =>{
+        await this.setState({search})
+        this.getData(this.state.search)
         console.log(this.state.search)
     }
 
     render(){
         const {isOpen, ShowModalLogin, ShowModalRegister, ShowModalLogout, search} = this.state
-        console.log(search)
+        // var name = this.props.name
         return(
             <Container-fluid>
             <header id="mu-header" style={{backgroundColor: '#F3F3F3'}}>
@@ -152,11 +166,11 @@ class Header extends React.Component {
                         </div>
                         <div className="mr-3" style={{fontSize: '20px'}}>
                         <InputGroup>
-                            <Input value = {search} onChange={(e) => this.setState({search: e.target.value})}  placeholder = "Search ..." >
-                                <Home 
-                                    search = {this.state.search}
-                                />
-                            </Input>
+                            <Input value = {search} onChange={(e) => this.handleSearch(e.target.value)}  placeholder = "Search ..." />
+                                {/* <Home 
+                                    data = {this.getData}
+                                    name = "asd"
+                                /> */}
                             <InputGroupAddon addonType="append" >
                                 <Button color="secondary" disabled>Search</Button>
                             </InputGroupAddon>
@@ -216,4 +230,10 @@ class Header extends React.Component {
     }
 }
 
-export default Header
+const mapStateToProps = state =>{
+    return{
+        item: state.item
+    }
+}
+
+export default connect (mapStateToProps) (Header)

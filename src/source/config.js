@@ -1,1 +1,1 @@
-export const APP_URL = 'http://localhost:4040/'
+export const APP_URL = 'http://3.93.239.80:4040/'
