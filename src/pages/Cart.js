@@ -131,15 +131,15 @@ class Cart extends React.Component{
                           </CardText>
                           
                           <CardText>
-                                            <StarRatings
-                                                rating={v.rate}
-                                                starRatedColor="#FFC400"
-                                                changeRating={this.changeRating}
-                                                numberOfStars={5}
-                                                name='rating' 
-                                                starDimension="20px"
-                                                starSpacing="5px"
-                                            />
+                            <StarRatings
+                                rating={v.rate}
+                                starRatedColor="#FFC400"
+                                changeRating={this.changeRating}
+                                numberOfStars={5}
+                                name='rating' 
+                                starDimension="20px"
+                                starSpacing="5px"
+                            />
                           </CardText>
                         </div>
                         <div className="cold-md-5 ml-5">

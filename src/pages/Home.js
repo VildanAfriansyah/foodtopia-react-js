@@ -17,19 +17,21 @@ class Home extends React.Component{
         this.state = {
         }
     }
+    
     async componentDidMount(){
         await this.props.dispatch(getItems())
     }
 
     prevButton = async()=>{
-        const url = this.props.item.data.prev
+        const url = this.props.item.data.info.previous
+        console.log(this.props.item.data.info.previous)
         if(url){
             this.props.dispatch(getNextItems(url))
         }
     }
 
     nextButton = async()=>{
-        const url = this.props.item.data.next
+        const url = this.props.item.data.info.next
         if(url){
             this.props.dispatch(getNextItems(url))
         }

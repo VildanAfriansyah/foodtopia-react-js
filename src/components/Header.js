@@ -24,7 +24,6 @@ import Cookie from 'js-cookie'
 import {ModalLogin, ModalLogout, ModalRegister} from '../components/Modal'
 import { connect } from 'react-redux'
 
-import Home from '../pages/Home'
 import { getItems } from '../redux/action/Item'
 
 const token = Cookie.get('token')
